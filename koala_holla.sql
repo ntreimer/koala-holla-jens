@@ -16,5 +16,3 @@ VALUES  ('Scotty', 4, 'M', TRUE, 'Born in Guatemala'),
         ('Logan', 15, 'M', FALSE, 'Loves the sauna'),
         ('Charlie', 9, 'M', FALSE, 'Favorite band is Nirvana'),
         ('Betsy', 4, 'F', TRUE, 'Has a pet iguana' );
-
-SELECT * FROM "koalas";
