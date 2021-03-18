@@ -52,3 +52,12 @@ Upon completion of the project you'll need to provide not only the source (via G
 Your final product may look something like this:
 
 ![sample](sample.png)
+
+## CheckList
+
+[] - 
+[] - 
+[] - 
+[] - 
+[] - 
+[] - 
