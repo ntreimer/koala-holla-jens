@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Koalla Holla</title>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="vendors/jquery-3.3.1.min.js" charset="utf-8"></script>
     <script src="scripts/client.js" charset="utf-8"></script>
     <link rel="stylesheet" href="vendors/bootstrap_css/bootstrap.css">
@@ -15,52 +16,45 @@
       <h3>1976 Llama Comma Drive</h2>
       <h3>Walla Walla, WA</h2>
     </header>
-    <section id="addKoala">
-      <h2>Add Koala</h2>
-      <input type="text" id="nameIn" value="" placeholder="Name">
-      <input type="text" id="ageIn" value="" placeholder="Age">
+    <main class="container">
+      <section id="addKoala">
+        <h2>Add Koala</h2>
+        <input type="text" id="nameIn" value="" placeholder="Name">
+        <input type="text" id="ageIn" value="" placeholder="Age">
 
-      <select type="text" id="genderIn">
-        <option value="">--Please select Gender--</option>
-        <option value="M">Male</option>
-        <option value="F">Female</option>
-      </select>
+        <select type="text" id="genderIn">
+          <option value="">--Please select Gender--</option>
+          <option value="M">Male</option>
+          <option value="F">Female</option>
+        </select>
 
-      <select type="text" id="readyForTransferIn">
-        <option value="">--Ready for Transfer--</option>
-        <option value="true">Yes</option>
-        <option value="false">No</option>
-      </Select>
+        <select type="text" id="readyForTransferIn">
+          <option value="">--Ready for Transfer--</option>
+          <option value="true">Yes</option>
+          <option value="false">No</option>
+        </Select>
 
-      <input type="text" id="notesIn" value="" placeholder="Notes">
-      <button type="button" id="addButton">Add Koala</button>
-    </section>
-    <section>
-      <h2>All Koalas</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Gender</th>
-            <th>Ready for Transfer?</th>
-            <th>Notes</th>
-            <th>Toggle readiness</th>
-            <th>Remove</th>
-          </tr>
-        </thead>
-        <tbody id="viewKoalas">
-          <tr>
-            <td>Emily</td>
-            <td>14</td>
-            <td>M</td>
-            <td>Yes</td>
-            <td>Likes cotton candy</td>
-            <td><button data-id="" class="transferToggleBtn">Ready for Transfer</button></td>
-            <td><button data-id="" class="deleteBtn">Delete</button></td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
+        <input type="text" id="notesIn" value="" placeholder="Notes">
+        <button type="button" id="addButton">Add Koala</button>
+      </section>
+      <section>
+        <h2>All Koalas</h2>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Age</th>
+              <th scope="col">Gender</th>
+              <th scope="col">Ready for Transfer?</th>
+              <th scope="col">Notes</th>
+              <th scope="col">Toggle readiness</th>
+              <th scope="col">Remove</th>
+            </tr>
+          </thead>
+          <tbody id="viewKoalas">
+          </tbody>
+        </table>
+      </section>
+    </main>
   </body>
 </html>
