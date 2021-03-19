@@ -21,6 +21,7 @@ koalaRouter.post('/', (req, res) => {
   console.log(req.body);
   
   const newKoala = req.body;
+    
 
   const queryText = `
     INSERT INTO "koalas" ("name", "age", "gender", "ready_for_transfer", "notes") 
@@ -31,7 +32,7 @@ koalaRouter.post('/', (req, res) => {
         newKoala.name, 
         newKoala.age, 
         newKoala.gender, 
-        newKoala.ready_for_transfer, 
+        newKoala.readyForTransfer, 
         newKoala.notes
         
     ]).then((result) => {
@@ -52,6 +53,7 @@ koalaRouter.put('/:id', (req, res) => {
     pool.query(queryText, [req.params.id]).then((results)=>{
         console.log(results);
         res.sendStatus(200);
+        
     }).catch((err)=>{
         console.log(err);
         res.sendStatus(500);
