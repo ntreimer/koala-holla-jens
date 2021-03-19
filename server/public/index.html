@@ -5,11 +5,12 @@
     <title>Koalla Holla</title>
     <script src="vendors/jquery-3.3.1.min.js" charset="utf-8"></script>
     <script src="scripts/client.js" charset="utf-8"></script>
-    <!-- <link rel="stylesheet" href="views/styles.css"> -->
+    <link rel="stylesheet" href="vendors/bootstrap_css/bootstrap.css">
+    <link rel="stylesheet" href="styles/style.css">
   </head>
   <body>
-    <header>
-      <img src="images/icon.png" class="icon" />
+    <header class="header">
+      <img src="images/icon.png" class="icon koala-image" />
       <h1>Koala Holla</h1>
       <h3>1976 Llama Comma Drive</h2>
       <h3>Walla Walla, WA</h2>
@@ -26,7 +27,7 @@
       </select>
 
       <select type="text" id="readyForTransferIn">
-        <option value="">--Ready to Transfer--</option>
+        <option value="">--Ready for Transfer--</option>
         <option value="true">Yes</option>
         <option value="false">No</option>
       </Select>
@@ -42,11 +43,22 @@
             <th>Name</th>
             <th>Age</th>
             <th>Gender</th>
-            <th>Ready for Transfer</th>
+            <th>Ready for Transfer?</th>
             <th>Notes</th>
+            <th>Toggle readiness</th>
+            <th>Remove</th>
           </tr>
         </thead>
         <tbody id="viewKoalas">
+          <tr>
+            <td>Emily</td>
+            <td>14</td>
+            <td>M</td>
+            <td>Yes</td>
+            <td>Likes cotton candy</td>
+            <td><button data-id="" class="transferToggleBtn">Ready for Transfer</button></td>
+            <td><button data-id="" class="deleteBtn">Delete</button></td>
+          </tr>
         </tbody>
       </table>
     </section>

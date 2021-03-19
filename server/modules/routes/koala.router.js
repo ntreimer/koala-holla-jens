@@ -49,11 +49,21 @@ koalaRouter.post('/', (req, res) => {
 
 // PUT
 koalaRouter.put('/:id', (req, res) => {
-    let queryText = `UPDATE "koalas" SET "ready_for_transfer"=TRUE WHERE "id"=$1`;
+    console.log('PUT isReady?:', req.body.status);
+    let queryText; 
+    let transferStatus = req.body.status;
+    console.log('transferstatus:', transferStatus);
+    if (transferStatus === 'true'){
+        queryText = `UPDATE "koalas" SET "ready_for_transfer"=false WHERE "id"=$1`;
+    }
+    
+    if (transferStatus === 'false'){
+        queryText = `UPDATE "koalas" SET "ready_for_transfer"=true WHERE "id"=$1`;
+    }
+    console.log(queryText);
     pool.query(queryText, [req.params.id]).then((results)=>{
         console.log(results);
         res.sendStatus(200);
-        
     }).catch((err)=>{
         console.log(err);
         res.sendStatus(500);
@@ -61,5 +71,15 @@ koalaRouter.put('/:id', (req, res) => {
 })//end PUT
 
 // DELETE
+koalaRouter.delete( '/:id', ( req, res )=>{
+    console.log( 'koala deleted:', req.params );
+    let queryString = `DELETE FROM "koalas" WHERE "id"=$1`;
+    pool.query( queryString, [ req.params.id ] ).then( ( results ) =>{
+        res.sendStatus( 200 );
+    }).catch( ( error )=>{
+        console.log( 'not today amigo', error );
+        res.sendStatus( 500 );
+    })
+})
 
 module.exports = koalaRouter;

@@ -10,6 +10,11 @@ $( document ).ready( function(){
 }); // end doc ready
 
 function setupClickListeners() {
+  
+  $( document ).on( 'click', '.deleteBtn', deleteKoala );
+  $( document ).on( 'click', '.transferToggleBtn', toggleReadiness );
+
+
   $( '#addButton' ).on( 'click', function(){
     console.log( 'in addButton on click' );
     // get user input and put in an object
@@ -36,7 +41,7 @@ function getKoalas(){
     url: '/koalas'
   }).then(function(response){
     console.log(response);
-    showKoalas();
+    showKoalas(response);
   })
 } // end getKoalas
 
@@ -59,7 +64,62 @@ function saveKoala( newKoala ){
  })
 }// end saveKoala
 
+function toggleReadiness (){
+  const myID = $(this).data('id');
+  console.log('ID clicked:', myID);
+  
+  let readiness = {
 
-function showKoalas(){
-  console.log( 'in showKoalas' );
+    status: $(this).data('status')
+  }
+  console.log(readiness);
+  $.ajax({
+    method: 'PUT',
+    url: `/koalas/${myID}`,
+    data: readiness
+  }).then(function(response){
+    console.log('back from /koalas PUT', response);
+    getKoalas();
+  }).catch( function( err ){
+    console.log(err);
+  })
 }
+
+function showKoalas(array){
+  console.log( 'in showKoalas' );
+  $('#viewKoalas').empty();
+  for (let i = 0; i < array.length; i++) {
+    const element = array[i];
+    $('#viewKoalas').append(`
+    <tr>
+      <td>${element.name}</td>
+      <td>${element.age}</td>
+      <td>${element.gender}</td>
+      <td>${element.ready_for_transfer}</td>
+      <td>${element.notes}</td>
+      <td><button data-id="${element.id}" data-status="${element.ready_for_transfer}" class="transferToggleBtn">Ready for Transfer</button></td>
+      <td><button data-id="${element.id}" class="deleteBtn">Delete</button></td>
+    </tr>
+  `);
+  }
+}//end showKoalas
+
+
+function deleteKoala() {
+  const myID = $(this).data('id');
+  console.log('ID clicked:', myID);
+
+  $.ajax({
+
+    type: 'DELETE',
+    url: `/koalas/${myID}`
+
+  }).then(function(response) {
+      console.log('back from DELETE with:', response);
+      getKoalas();
+  }).catch(function(error) {
+
+      console.log('error in DELETE Route', error);
+  });
+
+}// end deleteKoala
